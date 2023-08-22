@@ -1,0 +1,138 @@
+:root{
+  --dark-grey: #9fabae;
+  --light-grey: #Dfe3e4;
+  --green: #2ecc21;
+  --red: #ff005a;
+  --yello: #fae500;
+}
+body{
+  background: #ff005a;
+}
+/* corpo dos cards*/
+.box-cards{
+  display: grid;
+  grid-auto-columns: auto;
+  grid-gap: 2px;
+  padding: 20px;
+}
+/* o card */
+.card form{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-direction: column;
+  width: 400px;
+}
+.card form .input_texto{
+  border: none;
+}
+/*nome de usuario */
+.card form p:before{
+  color: #fff;
+  font-size: 1.2rem;
+  content: attr(data-user);
+}
+/* input do titulo da task*/
+.titulo_e_progress{
+  display: flex;
+  justify-content: space-between;
+}
+.titulo_e_progress .titulo_task{
+  display: flex;
+  gap: 5px;
+  width: 280px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: none;
+  list-style: none;
+}
+
+.opcional{
+  position: relative;
+  display: inline-block;
+  background-color: var(--light-grey);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.progress {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 120px;
+}
+.opcional .progress.active {
+  display: block;
+}
+
+.container ul{
+  list-style: none;
+  display: flex;
+  width: 400px;
+  margin-top: 60px;
+  padding: 0;
+}
+.container ul li{
+  position: relative;
+  color: var(--dark-grey);
+  width: 25%;
+  text-align: center;
+}
+.container ul li:before{
+  /* mantem no centro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* pega o numero do step */
+  content: attr(data-step);
+
+  /* circulo */
+  width: 35px;
+  height: 35px;
+  border-radius:50%;
+
+  /* cores */
+  background: var(--light-grey);
+  color: var(--dark-grey);
+
+  /* posicionamento */
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 20px);
+  z-index: 80;
+}
+.container ul li:after{
+  /* desenha o traço */
+  content: "";
+  width: 100%;
+  height: 4px;
+  background: var(--light-grey);
+
+  /* pociciona */
+  position: absolute;
+  top: -32.2px;
+  left: -50%;
+}
+/* tira o traço da esquerda */
+.container ul li:first-child:after{
+  width: 0;
+}
+/* cor da bolinha ativa */
+.container ul li.active:before{
+  background: var(--green);
+  color: #fff;
+}
+/* cor da linha ativa*/
+.container ul li.active:after{
+  background: var(--green);
+}
+/* cor do texto do item */
+.container ul li.active{
+  color: var(--green);
+}
